@@ -1,0 +1,56 @@
+<html>
+    <head>
+        {% load static %}
+        <script src ="{% static 'fd/js/jquery-3.4.1.min.js' %}"></script>
+        <script src ="{% static 'fd/bootstrap/js/bootstrap.min.js' %}"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'fd/bootstrap/css/bootstrap.min.css' %}">
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'fd/css/style.css' %}">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="#">Django</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'fd:index' %}">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="PronavbarDropdown" role="button" data-toggle="dropdown">Products</a>
+                            <div class="dropdown-menu" aria-labelledby="PronavbarDropdown">
+                                <a class="dropdown-item" href="{% url 'fd:product_index' %}"> Search</a>
+                                <a class="dropdown-item" href="{% url 'fd:product_create' %}">Create</a>
+                            </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="SuratnavbarDropdown" role="button" data-toggle="dropdown" href="#">Surat Jalan</a>
+                                <div class="dropdown-menu" aria-labelledby="SuratnavbarDropdown">
+                                    <a class="dropdown-item" href="#"> Search</a>
+                                    <a class="dropdown-item" href="#">Create</a>
+                                </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="TrannavbarDropdown" href="#" role="button" data-toggle="dropdown">Transaction</a>
+                            <div class="dropdown-menu" aria-labelledby="TrannavbarDropdown">
+                                <a class="dropdown-item" href="#"> Search</a>
+                                <a class="dropdown-item" href="#">Create</a>
+                            </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        {% block content %}
+        {% endblock %}
+        <!-- footer code -->
+        <footer>
+            <div class="footer" id="footer">                          
+                <div class="container">
+                    <center><p class="pull-center copyright" style ="padding-top: 1%;"> Copyright © Rinouka 2019. All right reserved. </p></center>
+                </div>
+            </div> 
+        </footer>
+    </body>
+<html>

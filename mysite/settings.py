@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['192.168.99.100']
 # Application definition
 
 INSTALLED_APPS = [
+    'fd.apps.FdConfig',
     'polls.apps.PollsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -84,6 +85,15 @@ DATABASES = {
         'HOST'  : 'localhost',
         'PORT'  :  '3306',
     }
+    #,
+    # 'flying_dragon': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME'  : 'flying_dragon',
+    #     'USER'  : 'root',
+    #     'PASSWORD': 'root',
+    #     'HOST'  : 'localhost',
+    #     'PORT'  :  '3306',
+    # }
 }
 
 

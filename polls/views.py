@@ -24,7 +24,8 @@ class DetailView(generic.DetailView):
 
     def get_queryset(self):
         """Excludes any questions that aren't published yet"""
-        return Question.object.filter(pub_date__lte=timezone.now())
+        return Question.objects.order_by('-pub_date')
+        #return Question.object.filter(pub_date__lte=timezone.now())
 
 
 class ResultsView(generic.DetailView):
