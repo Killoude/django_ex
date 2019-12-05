@@ -23,6 +23,10 @@ table th,tr{
   padding: 10px 0;
 }
 
+.messages{
+  list-style-type: none;
+}
+
 .navbar {
     background-color: #5af28e;
   }

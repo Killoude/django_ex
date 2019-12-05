@@ -1,4 +1,6 @@
 from django.http import HttpResponse
+from django.contrib import messages
+from django.db import DatabaseError
 from django.shortcuts import get_object_or_404, render, redirect
 from django.core.paginator import Paginator
 from django.views import generic
@@ -25,7 +27,11 @@ def product_create(request, product_id = None):
         form = ProductForm(request.POST, instance = product)
         if form.is_valid():
             product = form.save(commit=False)
-            product.save()
+            try:
+                product.save()
+                messages.success(request, 'Product has been saved.')
+            except DatabaseError:
+                messages.error(request,  'something wrong.')
             return redirect('fd:product_index')
     else:
         form = ProductForm(instance = product)
