@@ -12,6 +12,10 @@
     </div>
     <br>
     <h4>Products</h4> 
+    <form method="get" action="">
+        <label for="search">Search</label><input id="search" type="text" name="q">
+        <input type="submit" class="btn btn-primary" value="submit" style="width:100px;">
+    </form>
     <table class="table">
         <thead>
             <tr>
@@ -30,7 +34,7 @@
             <td>{{product.detail}}</td>
             <td>{{product.crt}} </td>
             <td>{{product.pcs}}</td>
-            <td><a href="{% url 'fd:product_edit' product.id %}">details</a></td>
+            <td><a href="{% url 'fd:product_update' product.id %}">details</a></td>
         </tr>
         {% endfor %}
     </table>

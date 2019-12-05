@@ -4,8 +4,8 @@
 
     <br>
     <table class="table">
-    <h3 class="page-header">Create Product</h3>
-    <form action="{% url 'fd:product_data_confirm' %}" method="post" class="form-horizontal" role="form">
+    <h3 class="page-header">Edit Product</h3>
+    <form action="{% url 'fd:product_update' product_id %}" method="post" class="form-horizontal" role="form">
             {% csrf_token %}
             <tbody>
             {{ form }}
