@@ -1,0 +1,59 @@
+{% extends "fd/elements/base.html" %}
+{% block content %}
+<div class="container">
+    {% if messages %}
+        {% for message in messages %}
+        <div {% if message.tags == 'error' %} class="alert alert-danger" {% else %} class ="alert alert-{{ message.tags }}" {% endif %}" role="alert">
+            <ul class="messages">
+                <li{% if message.tags %} class="message-{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+            </ul>
+    {% endif %}
+    </div>
+    <br>
+    <h4>Surat Jalan</h4> 
+    <form method="get" action="">
+        <label for="search">Search</label><input id="search" type="text" name="q">
+        <input type="submit" class="btn btn-primary" value="submit" style="width:100px;">
+    </form>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Customer</th>
+                <th>Transaction Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        {% for transaction in temp_transactions %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{transaction.nota}}</td>
+            <td>{{product.detail}}</td>
+            <td>{{product.crt}} </td>
+            <td>{{product.pcs}}</td>
+            <td><a href="{% url 'fd:product_update' product.id %}">details</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    <div class="pagination">
+        <span class="step-links">
+            {% if products.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ products.previous_page_number }}">previous</a>
+            {% endif %}
+        
+            <span class="current">
+                Page {{ products.number }} of {{ products.paginator.num_pages }}
+            </span>
+        
+            {% if products.has_next %}
+                <a href="?page={{ products.next_page_number }}">next</a>
+                <a href="?page={{ products.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+            </span>
+    </div>
+    <br><br>
+</div>
+{% endblock %}

@@ -28,8 +28,8 @@ class Users(models.Model):
 
 class Customers(models.Model):
     name = models.TextField()
-    address = models.TextField()
-    phone = models.CharField(max_length=11)
+    address = models.TextField(blank=True, null=True)
+    phone = models.CharField(max_length=11,blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     deleted_at = models.DateTimeField(blank=True, null=True)
@@ -77,7 +77,7 @@ class Products(models.Model):
 
 # Create your models here.
 class Transaction(models.Model):
-    nota = models.CharField(max_length = 11)
+    nota = models.CharField(max_length = 11, null = True)
     customers = models.ForeignKey(Customers, on_delete = models.CASCADE)
     customers_name = models.CharField(max_length= 255)
     transaction_date = models.DateField()

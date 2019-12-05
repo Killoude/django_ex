@@ -6,12 +6,17 @@ from .models import Customers, Products, Transaction, Detail_transaction, Users
     #model = Choice
     #extra = 3
 
+class CustomerAdmin(admin.ModelAdmin):
+    list_display = ('name', 'phone', 'address')
+    search_fields = ['name']
+    fieldsets = [
+        ('Customer information',{'fields': ['name','phone','address']}),
+    ]
+
 
 class TransactionAdmin(admin.ModelAdmin):
     list_display = ('nota', 'transanction_date')
-    #list_filter = ['pub_date']
-    #search_fields = ['question_text']
-    
+
     fieldsets = [
         (None,               {'fields': ['nota']}),
         ('Date information', {'fields': ['transanction_date'], 'classes': ['collapse']}),
@@ -27,5 +32,6 @@ class ProductAdmin(admin.ModelAdmin):
     ]
 
 admin.site.register(Transaction)
+admin.site.register(Customers, CustomerAdmin)
 admin.site.register(Products, ProductAdmin)
 
