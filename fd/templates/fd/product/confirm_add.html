@@ -1,0 +1,33 @@
+{% extends "fd/elements/base.html" %}
+{% block content %}
+<table  border="0">
+    {% for field in form %}
+    <tbody>
+        <div class="form-group">
+            <tr>    
+                <td>{{ field.label_tag }}</td>
+                <td>{{ field.value }}</td>        
+            </tr>
+        </div>
+    </tbody>
+    {% endfor %}
+
+    <tr>
+        <td><form action="{% url 'fd:product_data_input' %}" method="POST">
+        <button type="submit" class="btn btn-primary btn-lg">Back</button>
+        {% for field in form %}{{ field.as_hidden }}{% endfor %}
+        {% csrf_token %}
+        </form></td>
+        <td><form action="{% url 'fd:product_data_create' %}" method="POST">
+            <button type="submit" class="btn btn-primary btn-lg">Confirm</button>
+            {% for field in form %}{{ field.as_hidden }}{% endfor %}
+            {% csrf_token %}
+        </td>
+    </tr>
+    <!-- <td></td><form action="{% url 'fd:product_data_create' %}" method="POST">
+        <button type="submit" class="btn btn-primary btn-lg">Confirm</button>
+        {% for field in form %}{{ field.as_hidden }}{% endfor %}
+        {% csrf_token %}
+    </form> -->
+</table>
+{% endblock %}

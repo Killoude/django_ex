@@ -1,0 +1,65 @@
+{% extends "fd/elements/base.html" %}
+{% block content %}
+<div class="container">
+
+    <br>
+    {% if product %}
+    <table>
+        <form action="{% url 'fd:update_product' prod_id %}" method="POST">
+        {% csrf_token %}
+        {% for detail in product %}
+        <tr>
+            <td><label for="code"> Code </label></td>
+            <td><input type="text" id="code" class="form-control" name="code" value="{{detail.code}}"></td>
+        </tr>
+        <tr>
+            <td><label for="detail"> Detail Product </label></td>
+            <td><textarea name="detail" class="form-control" id="detail" cols="50" rows="3">{{detail.detail}}</textarea></td>
+        </tr>
+        <tr>
+            <td>Type</td>
+            <td><select name="type" id="type" class="form-control">
+                <option {% if detail.type_product == "" %} selected {% endif %} value="">----</option>
+                <option {% if detail.type_product == "Roman Candle" %} selected {% endif %} value="Roman Candle">Roman Candle</option>
+                <option {% if detail.type_product == "Cake" %} selected {% endif %} value="Cake">Cake</option>
+                <option {% if detail.type_product == "Toys" %} selected {% endif %}value="Toys">Toys</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Packing</td>
+            <td><input type="text" class="form-control" name="packing" ></td>
+        </tr>
+        <tr>
+            <td>Crt</td>
+            <td><input type="text" id="crt" class="form-control"  name="crt" value="{{detail.crt}}"></td>
+        </tr>
+        <tr>
+            <td>pcs</td>
+            <td><input type="text" id="pcs" length="10" class="form-control" name="pcs" value="{{detail.pcs}}"></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+        <div class="container">
+                <div class="row justify-content-center">
+                  <div class="col-2">
+                    <input type="submit" class="btn btn-primary" value="submit" style="width:100px;"></td>
+                  </div>
+                  <div class="col-2">
+                    <a href="{% url 'fd:product_index' %}" style="width:100px;" id="cancelbutton" class="btn btn-block btn-secondary">cancel</a>
+                  </div>
+                </div>
+              </div>
+        </form>
+    
+    <br><br>
+</div>
+{% else %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12">No data</div>
+        </div>
+      </div>
+{% endif %}
+{% endblock %}
