@@ -7,6 +7,7 @@ from django.views import generic
 from django.urls import reverse_lazy
 from .models import Products, Transaction , Detail_transaction, Customers
 from .forms import ProductForm, CustomerForm, SuratJalanForm
+import json
 
 data_per_pages = 10
 
@@ -202,9 +203,21 @@ class SuratJalanInput(generic.FormView):
     def form_valid(self, form):
         return render(self.request, 'fd/suratjalan/add.html', {'form':form})
 
+def autocompleteModel(request):
+    if request.is_ajax():
+        q = request.GET.get('term')
+        search_qs = Products.objects.filter(code__icontains=q)
+        results = []
+        ids = []
+        for r in search_qs:
+            results.append(r.code)
+            ids.append(r.id)
+        data = json.dumps(results)
+    else:
+        data = 'fail'
+    mimetype = 'application/json'
+    return HttpResponse(data, mimetype)
 
-def surat_jalan_index(request):
-    return HttpResponse("surat jalan (一覧)")
 
 def transaction_index(request):
     return HttpResponse("transaction list (一覧)")

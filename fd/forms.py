@@ -1,6 +1,7 @@
+from dal import autocomplete
 from django.forms import ModelForm, TextInput, HiddenInput
 from django import forms
-from .models import Products, Customers, Transaction
+from .models import Products, Customers, Transaction, Detail_transaction
 
 
 class ProductForm(ModelForm):
@@ -13,20 +14,6 @@ class ProductForm(ModelForm):
         for field in self.fields.values():
             field.widget.attrs['class'] = 'form-control'
 
-class ProductTransaction(ModelForm):
-    class Meta:
-        model = Products
-        fields = ['id', 'code', 'crt', 'pcs']
-        widgets = {
-            'id' : HiddenInput(),
-            'code': TextInput(),
-            'crt':TextInput(),
-            'pcs':TextInput(),
-        }
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        for field in self.fields.values():
-            field.widget.attrs['class'] = 'form-control'
  
 class CustomerForm(ModelForm):
     class Meta:

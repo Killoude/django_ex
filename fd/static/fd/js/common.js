@@ -25,9 +25,9 @@ function addRow(table) {
 
     codeinput.setAttribute("type","text");
     codeinput.setAttribute("name","productcode[]");
-    codeinput.setAttribute("class", "form-control");
+    codeinput.setAttribute("class", "autoc");
     codeinput.setAttribute("style","width:100px");
-
+        
     qtyinput.setAttribute("type","text");
     qtyinput.setAttribute("name","qtyinput[]");
     qtyinput.setAttribute("class", "form-control");
@@ -45,7 +45,10 @@ function addRow(table) {
     newCell.appendChild(codeinput);
     newCell2.appendChild(qtyinput);
     newCell3.appendChild(pcsinput);
+
+    //newCell.autocomplete
     //newCell4.appendChild(deletebutton);
+
   }
   
 function deleteRow(table) {

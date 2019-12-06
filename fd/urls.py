@@ -1,11 +1,15 @@
 from django.urls import path
 
+from django.conf.urls import url
+
 from . import views
 
 app_name = 'fd'
 
 urlpatterns = [
     # ex: /fd/
+    #url(r'^fd/suratjalan/ajax_calls/search/', views.autocompleteModel, name="autocomplete"),
+    path('suratjalan/ajax_call/search', views.autocompleteModel, name="autocomplete"),
     path('', views.index, name = 'index'),
     # /fd/product 一覧
     #customer

@@ -1,13 +1,48 @@
 {% extends "fd/elements/base.html" %}
 {% block content %}
 <div class="container">
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" media="all" /> <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"> </script> <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" type="text/javascript"></script>
     <script>
         $(document).ready(function(){
             $('#id_transaction_date').datepicker({
                 language:'en',
                 format:'yyyy-mm-dd'
             });
+            
+            // $("#txtSearch").autocomplete({
+            //     source: "{% url 'fd:autocomplete' %}",
+            //     minLength: 2,
+            //     open: function(){
+            //         setTimeout(function () {
+            //             $('.ui-autocomplete').css('z-index', 99);
+            //         }, 0);
+            //     },
+            //     success:function(data){
+            //         console.log(data);
+            //     }
+            //   });            
         })
+    </script>
+    <script>
+    $( function() {
+        $(".autoc").live("focus", function (event) {
+            $(this).autocomplete({
+            source: "{% url 'fd:autocomplete' %}",
+            minLength: 2,
+            open: function(){
+                setTimeout(function () {
+                    $('.ui-autocomplete').css('z-index', 99);
+                }, 0);
+            },
+            success:function(data){
+                console.log(data);
+            }
+            });
+
+            
+        });
+        
+    });   
     </script>
     <br>
     <table class="table">
@@ -25,11 +60,18 @@
             <td>pcs</td>
         </tr>
         <tr>
-            <td align="center"><input type="text" style="width:100px;" class="form-control" name="productcode[]"></td>
+            <td align="center"><input type="text" style="width:100px;" class="autoc" id="txtSearch" name="productcode[]">
+            <input type="text" name="pro_id" id="pro_id" style="width:50px;"></td>
             <td align="center"><input type="text" style="width:100px;" class="form-control" name="qtyinput[]"></td>
             <td align="center"><input type="text" style="width:100px;" class="form-control" name="pcsinput[]"></td>
         </td>
         </tr>
+        <tr>
+                <td align="center"><input type="text" style="width:100px;" class="autoc" id="txtSearch" name="productcode[]"></td>
+                <td align="center"><input type="text" style="width:100px;" class="form-control" name="qtyinput[]"></td>
+                <td align="center"><input type="text" style="width:100px;" class="form-control" name="pcsinput[]"></td>
+            </td>
+            </tr>
     </table>
     <table>    
         <tr>
