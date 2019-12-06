@@ -3,9 +3,13 @@
         {% load static %}
         <script src ="{% static 'fd/js/jquery-3.4.1.min.js' %}"></script>
         <script src ="{% static 'fd/bootstrap/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'fd/js/common.js' %}"></script>
+        <script src="{% static 'fd/js/bootstrap-datepicker.js' %}"></script>
+        <link href="{% static 'fd/css/datepicker.css' %">
         <link rel="stylesheet" type="text/css" href="{% static 'fd/bootstrap/css/bootstrap.min.css' %}">
         {% load static %}
         <link rel="stylesheet" type="text/css" href="{% static 'fd/css/style.css' %}">
+        <link rel="shortcut icon" href="#" />
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light">
@@ -36,7 +40,7 @@
                             <a class="nav-link dropdown-toggle" id="SuratnavbarDropdown" role="button" data-toggle="dropdown" href="#">Surat Jalan</a>
                                 <div class="dropdown-menu" aria-labelledby="SuratnavbarDropdown">
                                     <a class="dropdown-item" href="{% url 'fd:surat_jalan_index' %}"> Search</a>
-                                    <a class="dropdown-item" href="#">Create</a>
+                                    <a class="dropdown-item" href="{% url 'fd:surat_jalan_input' %}#">Create</a>
                                 </div>
                     </li>
                     <li class="nav-item dropdown">

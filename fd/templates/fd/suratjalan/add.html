@@ -1,0 +1,46 @@
+{% extends "fd/elements/base.html" %}
+{% block content %}
+<div class="container">
+    <script>
+        $(document).ready(function(){
+            $('#id_transaction_date').datepicker({
+                language:'en',
+                format:'yyyy-mm-dd'
+            });
+        })
+    </script>
+    <br>
+    <table class="table">
+    <h3 class="page-header">Create Surat Jalan</h3>
+    <form action="{% url 'fd:product_data_confirm' %}" method="post" class="form-horizontal" role="form">
+            {% csrf_token %}
+            <tbody>
+            {{ form }}
+            </tbody>
+    </table>
+    <table id="table_prod">
+        <tr>
+            <td>code</td>
+            <td>qty</td>
+            <td>pcs</td>
+        </tr>
+        <tr>
+            <td align="center"><input type="text" style="width:100px;" class="form-control" name="productcode[]"></td>
+            <td align="center"><input type="text" style="width:100px;" class="form-control" name="qtyinput[]"></td>
+            <td align="center"><input type="text" style="width:100px;" class="form-control" name="pcsinput[]"></td>
+        </td>
+        </tr>
+    </table>
+    <table>    
+        <tr>
+            <td><input type="submit" class="btn btn-primary" value="submit" style="width:100px;"></td>
+            <td><button onclick="javascript:history.back();" class="btn btn-secondary" style="width:100px;">Cancel</button></td>
+        </tr>
+        
+        </form>
+        <tr>
+            <td><button class="btn btn-secondary" onclick='addRow("table_prod");'>add new row</button></td>
+            <td><button class="btn btn-danger" onclick='deleteRow("table_prod");'>delete row</button></td>
+        </tr>
+    </table>
+{% endblock %}

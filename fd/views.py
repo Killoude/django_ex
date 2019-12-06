@@ -6,7 +6,7 @@ from django.core.paginator import Paginator
 from django.views import generic
 from django.urls import reverse_lazy
 from .models import Products, Transaction , Detail_transaction, Customers
-from .forms import ProductForm, CustomerForm
+from .forms import ProductForm, CustomerForm, SuratJalanForm
 
 data_per_pages = 10
 
@@ -192,6 +192,15 @@ class SuratJalanIndex(generic.ListView):
         page = self.request.GET.get('page')
         temp_transactions = paginator.get_page(page)
         return temp_transactions
+
+
+class SuratJalanInput(generic.FormView):
+    """just showing the input form"""
+    template_name = 'fd/suratjalan/add.html'
+    form_class = SuratJalanForm
+
+    def form_valid(self, form):
+        return render(self.request, 'fd/suratjalan/add.html', {'form':form})
 
 
 def surat_jalan_index(request):

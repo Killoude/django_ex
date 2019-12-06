@@ -31,6 +31,8 @@ ALLOWED_HOSTS = ['192.168.99.100']
 # Application definition
 
 INSTALLED_APPS = [
+    'dal',
+    'dal_select2',
     'fd.apps.FdConfig',
     'polls.apps.PollsConfig',
     'django.contrib.admin',

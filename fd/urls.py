@@ -25,7 +25,7 @@ urlpatterns = [
     ##surat jalan
     #path('suratjalan', views.surat_jalan_index, name='surat_jalan_index'),
     path('suratjalan', views.SuratJalanIndex.as_view(), name='surat_jalan_index'),
-    path('transaction', views.transaction_index, name = 'transaction_index'),
+    path('suratjalan/create', views.SuratJalanInput.as_view(), name = 'surat_jalan_input'),
     # path('<int:pk>/results/', views.ResultsView.as_view(), name ='results'),
     # # ex: /polls/5/vote/
     # path('<int:question_id>/vote/', views.vote, name = 'vote'),
